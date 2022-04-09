@@ -19,7 +19,6 @@ const { Camera, Filesystem } = Plugins;
   providedIn: "root",
 })
 export class PhotoService {
-
   public photos: Photo[] = [];
   private platform: Platform;
 
@@ -72,7 +71,6 @@ export class PhotoService {
   private async savePicture(cameraPhoto: CameraPhoto) {
     // Convert image to base64 format, required by Filesystem API to save
     const base64Data = await this.readAsBase64(cameraPhoto);
-
     // Write the image file to the data directory using current time as
     // crude identifier.
     const fileName = new Date().getTime() + ".jpeg";
@@ -81,7 +79,6 @@ export class PhotoService {
       data: base64Data,
       directory: FilesystemDirectory.Data,
     });
-
     // Display the new image by rewriting the 'file://' path to HTTP
     // Details: https://ionicframework.com/docs/building/webview#file-protocol
     if (this.platform.is("hybrid")) {
